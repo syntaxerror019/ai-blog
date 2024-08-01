@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+
+
+<html lang="en-us" data-theme="">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+        
+<meta charset="utf-8">
+<meta name="HandheldFriendly" content="True">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer-when-downgrade">
+
+<title>Installing and Using Flask-SocketIO: A Step-by-Step Guide - AI Tech Blog @ sntx.dev</title>
+
+<meta name="description" content="In this article, we will explore how to install Flask-SocketIO, a powerful extension that enables real-time communication between clients and servers in Flask applications. We will walk through the installation process, setting up a basic Flask application with SocketIO, and demonstrate how to implement real-time features such as chat functionality.
+# Table of Contents Prerequisites Installing Flask and Flask-SocketIO Creating a Basic Flask Application Implementing SocketIO for Real-Time Communication Running the Application Conclusion ## Prerequisites Before we begin, ensure you have the following installed:">
+
+
+
+
+
+<link rel="icon" type="image/x-icon" href="http://localhost:1313/favicon.ico">
+<link rel="apple-touch-icon-precomposed" href="http://localhost:1313/favicon.png">
+
+
+
+
+
+
+    
+
+
+
+    
+
+
+
+<style>
+  body {
+    visibility: hidden;
+    opacity: 0;
+  }
+</style>
+
+<noscript>
+  <style>
+    body {
+      visibility: visible;
+      opacity: 1;
+    }
+  </style>
+</noscript>
+
+
+
+
+    
+
+
+
+
+
+    
+    
+    
+
+    
+        <link rel="stylesheet" href="/css/style.03df79c682b91915c7cd261ecd1a6ec4d0fe668c98fa46310d0fbade319b11bd.css" integrity="sha256-A995xoK5GRXHzSYezRpuxND&#43;ZoyY&#43;kYxDQ&#43;63jGbEb0=">
+    
+
+
+
+
+
+    
+
+
+
+
+
+    
+    
+    
+
+    
+        <link rel="stylesheet" href="/css/style.9c1888ebff42c0224ce04dac10cb2c401f1b77f54f78e8d87d73c3bed781c263.css" integrity="sha256-nBiI6/9CwCJM4E2sEMssQB8bd/VPeOjYfXPDvteBwmM=">
+    
+
+
+
+
+
+    
+
+
+
+
+
+    
+    
+    
+
+    
+        <link rel="stylesheet" href="/css/style.acd606c0fce58853afe0248d37bb41acbbcdd8b1aca2412b6c0fa760da0137f3.css" integrity="sha256-rNYGwPzliFOv4CSNN7tBrLvN2LGsokErbA&#43;nYNoBN/M=">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    
+
+
+
+
+
+    
+    
+    
+
+    
+        <script src="/js/script.672e2309c296e07c18bcd08b28d797a56222ff941d65f308fba3158c44885b14.js" type="text/javascript" charset="utf-8" integrity="sha256-Zy4jCcKW4HwYvNCLKNeXpWIi/5QdZfMI&#43;6MVjESIWxQ="></script>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+</head>
+<body>
+    <a class="skip-main" href="#main">Skip to main content</a>
+    <div class="container">
+        <header class="common-header">
+            
+                <div class="header-top">
+    <div class="header-top-left">
+        <h1 class="site-title noselect">
+    <a href="/">AI Tech Blog @ sntx.dev</a>
+</h1>
+
+        
+
+
+
+    
+
+
+
+    
+
+
+
+    
+        <div class="theme-switcher">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-sun-high"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656z" /><path d="M6.343 17.657l-1.414 1.414" /><path d="M6.343 6.343l-1.414 -1.414" /><path d="M17.657 6.343l1.414 -1.414" /><path d="M17.657 17.657l1.414 1.414" /><path d="M4 12h-2" /><path d="M12 4v-2" /><path d="M20 12h2" /><path d="M12 20v2" /></svg>
+
+
+</span>
+
+        </div>
+    
+
+    <script>
+        const STORAGE_KEY = 'user-color-scheme'
+        const defaultTheme = "auto"
+
+        let currentTheme
+        let switchButton
+        let autoDefinedScheme = window.matchMedia('(prefers-color-scheme: dark)')
+
+        function switchTheme(e) {
+            currentTheme = (currentTheme === 'dark') ? 'light' : 'dark';
+            if (localStorage) localStorage.setItem(STORAGE_KEY, currentTheme);
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            changeGiscusTheme(currentTheme);
+            document.body.dispatchEvent(new CustomEvent(currentTheme + "-theme-set"));
+        }
+
+        const autoChangeScheme = e => {
+            currentTheme = e.matches ? 'dark' : 'light'
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            changeGiscusTheme(currentTheme);
+            document.body.dispatchEvent(new CustomEvent(currentTheme + "-theme-set"));
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            switchButton = document.querySelector('.theme-switcher')
+            currentTheme = detectCurrentScheme()
+
+            if (currentTheme === 'auto') {
+                autoChangeScheme(autoDefinedScheme);
+                autoDefinedScheme.addListener(autoChangeScheme);
+            } else {
+                document.documentElement.setAttribute('data-theme', currentTheme)
+            }
+
+            if (switchButton) {
+                switchButton.addEventListener('click', switchTheme, false)
+            }
+
+            showContent();
+        })
+
+        function detectCurrentScheme() {
+            if (localStorage !== null && localStorage.getItem(STORAGE_KEY)) {
+                return localStorage.getItem(STORAGE_KEY)
+            }
+            if (defaultTheme) {
+                return defaultTheme
+            }
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        function showContent() {
+            document.body.style.visibility = 'visible';
+            document.body.style.opacity = 1;
+        }
+
+        function changeGiscusTheme (theme) {
+            function sendMessage(message) {
+              const iframe = document.querySelector('iframe.giscus-frame');
+              if (!iframe) return;
+              iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+            }
+
+            sendMessage({
+              setConfig: {
+                theme: theme
+              }
+            });
+        }
+    </script>
+
+
+        <ul class="social-icons noselect">
+
+
+    
+        
+        
+        <li>
+            <a href="https://github.com/syntaxerror019" title="Github" rel="me">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-github"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" /></svg>
+
+
+</span>
+
+            </a>
+        </li>
+    
+
+    
+        <li>
+            <a href="sntx@sntx.dev" title="Email" rel="me">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-mail"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" /><path d="M3 7l9 6l9 -6" /></svg>
+
+
+</span>
+
+            </a>
+        </li>
+    
+
+
+
+
+
+
+    <li>
+            <a href="/index.xml" title="RSS" rel="me">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-rss"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M4 4a16 16 0 0 1 16 16" /><path d="M4 11a9 9 0 0 1 9 9" /></svg>
+
+
+</span>
+
+            </a>
+        </li>
+    
+
+</ul>
+
+    </div>
+    <div class="header-top-right">
+
+    </div>
+</div>
+
+
+    <nav class="noselect">
+        
+        
+        <a class="" href="http://localhost:1313/" title="">Home</a>
+        
+        <a class="" href="https://blog.sntx.dev/" title="">Other Posts</a>
+        
+        <a class="" href="https://sntx.dev/" title="">About</a>
+        
+        <a class="" href="https://sntx.dev/" title="">Contact</a>
+        
+        <a class="" href="https://blog.sntx.dev/post/ai-blog/" title="">What is this?</a>
+        
+    </nav>
+
+
+
+
+
+
+
+
+            
+        </header>
+        <main id="main" tabindex="-1">
+            
+    
+
+    <article class="post h-entry">
+        <div class="post-header">
+            <header>
+                <h1 class="p-name post-title">Installing and Using Flask-SocketIO: A Step-by-Step Guide</h1>
+                
+
+            </header>
+            
+
+
+<div class="post-info noselect">
+    
+        <div class="post-date dt-published">
+            <time datetime="2024-08-01">2024-08-01</time>
+            
+        </div>
+    
+
+    <a class="post-hidden-url u-url" href="/post/08-01-24-installing-and-using-flask-socketio-a-step-by-step-guide/">/post/08-01-24-installing-and-using-flask-socketio-a-step-by-step-guide/</a>
+    <a href="http://localhost:1313/" class="p-name p-author post-hidden-author h-card" rel="me"></a>
+
+
+    <div class="post-taxonomies">
+        
+        
+            <ul class="post-tags">
+                
+                    
+                    <li><a href="/tags/ai/">#AI</a></li>
+                
+                    
+                    <li><a href="/tags/technology/">#Technology</a></li>
+                
+            </ul>
+        
+        
+    </div>
+</div>
+
+        </div>
+        
+
+  
+  
+
+
+
+
+  
+  
+  
+  <details class="toc noselect">
+    <summary>Table of Contents</summary>
+    <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#table-of-contents">Table of Contents</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installing-flask-and-flask-socketio">Installing Flask and Flask-SocketIO</a></li>
+        <li><a href="#creating-a-basic-flask-application">Creating a Basic Flask Application</a></li>
+        <li><a href="#implementing-socketio-for-real-time-communication">Implementing SocketIO for Real-Time Communication</a></li>
+        <li><a href="#running-the-application">Running the Application</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+  </details>
+  
+
+
+
+<script>
+  var toc = document.querySelector(".toc");
+  if (toc) {
+    toc.addEventListener("click", function () {
+      if (event.target.tagName !== "A") {
+        event.preventDefault();
+        if (this.open) {
+          this.open = false;
+          this.classList.remove("expanded");
+        } else {
+          this.open = true;
+          this.classList.add("expanded");
+        }
+      }
+    });
+  }
+</script>
+
+        <div class="content e-content">
+            <p>In this article, we will explore how to install Flask-SocketIO, a powerful extension that enables real-time communication between clients and servers in Flask applications. We will walk through the installation process, setting up a basic Flask application with SocketIO, and demonstrate how to implement real-time features such as chat functionality.</p>
+<h2 id="table-of-contents" >
+<div>
+    <a href="#table-of-contents">
+        #
+    </a>
+    Table of Contents
+</div>
+</h2>
+<ol>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#installing-flask-and-flask-socketio">Installing Flask and Flask-SocketIO</a></li>
+<li><a href="#creating-a-basic-flask-application">Creating a Basic Flask Application</a></li>
+<li><a href="#implementing-socketio-for-real-time-communication">Implementing SocketIO for Real-Time Communication</a></li>
+<li><a href="#running-the-application">Running the Application</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+<h3 id="prerequisites" >
+<div>
+    <a href="#prerequisites">
+        ##
+    </a>
+    Prerequisites
+</div>
+</h3>
+<p>Before we begin, ensure you have the following installed:</p>
+<ul>
+<li>Python 3.6 or later</li>
+<li>pip (Python package installer)</li>
+</ul>
+<h3 id="installing-flask-and-flask-socketio" >
+<div>
+    <a href="#installing-flask-and-flask-socketio">
+        ##
+    </a>
+    Installing Flask and Flask-SocketIO
+</div>
+</h3>
+<p>To get started, you need to install Flask and Flask-SocketIO. Open your terminal and run the following commands:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install Flask
+</span></span><span style="display:flex;"><span>pip install flask-socketio
+</span></span></code></pre></div><h3 id="creating-a-basic-flask-application" >
+<div>
+    <a href="#creating-a-basic-flask-application">
+        ##
+    </a>
+    Creating a Basic Flask Application
+</div>
+</h3>
+<p>Create a new directory for your project and navigate into it:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir flask_socketio_app
+</span></span><span style="display:flex;"><span><span style="color:#ff5c57">cd</span> flask_socketio_app
+</span></span></code></pre></div><p>Now, create a new file named <code>app.py</code> and add the following code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff6ac1">from</span> flask <span style="color:#ff6ac1">import</span> Flask, render_template
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">from</span> flask_socketio <span style="color:#ff6ac1">import</span> SocketIO
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>app <span style="color:#ff6ac1">=</span> Flask(__name__)
+</span></span><span style="display:flex;"><span>socketio <span style="color:#ff6ac1">=</span> SocketIO(app)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff9f43">@app.route</span>(<span style="color:#5af78e">&#39;/&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">def</span> <span style="color:#57c7ff">index</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#ff6ac1">return</span> render_template(<span style="color:#5af78e">&#39;index.html&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff6ac1">if</span> __name__ <span style="color:#ff6ac1">==</span> <span style="color:#5af78e">&#39;__main__&#39;</span>:
+</span></span><span style="display:flex;"><span>    socketio<span style="color:#ff6ac1">.</span>run(app)
+</span></span></code></pre></div><h3 id="implementing-socketio-for-real-time-communication" >
+<div>
+    <a href="#implementing-socketio-for-real-time-communication">
+        ##
+    </a>
+    Implementing SocketIO for Real-Time Communication
+</div>
+</h3>
+<p>Now, let&rsquo;s create a simple HTML template to handle real-time communication. Create a new folder named <code>templates</code> and within it, create a file named <code>index.html</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#78787e">&lt;!DOCTYPE html&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#ff6ac1">html</span> <span style="color:#57c7ff">lang</span><span style="color:#ff6ac1">=</span><span style="color:#5af78e">&#34;en&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#ff6ac1">head</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#ff6ac1">meta</span> <span style="color:#57c7ff">charset</span><span style="color:#ff6ac1">=</span><span style="color:#5af78e">&#34;UTF-8&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#ff6ac1">meta</span> <span style="color:#57c7ff">name</span><span style="color:#ff6ac1">=</span><span style="color:#5af78e">&#34;viewport&#34;</span> <span style="color:#57c7ff">content</span><span style="color:#ff6ac1">=</span><span style="color:#5af78e">&#34;width=device-width, initial-scale=1.0&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#ff6ac1">title</span>&gt;Flask-SocketIO Chat&lt;/<span style="color:#ff6ac1">title</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#ff6ac1">script</span> <span style="color:#57c7ff">src</span><span style="color:#ff6ac1">=</span><span style="color:#5af78e">&#34;https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js&#34;</span>&gt;&lt;/<span style="color:#ff6ac1">script</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#ff6ac1">script</span>&gt;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff5c57">var</span> socket <span style="color:#ff6ac1">=</span> io();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff5c57">function</span> sendMessage() {
+</span></span><span style="display:flex;"><span>            <span style="color:#ff5c57">var</span> message <span style="color:#ff6ac1">=</span> <span style="color:#ff5c57">document</span>.getElementById(<span style="color:#5af78e">&#39;message&#39;</span>).value;
+</span></span><span style="display:flex;"><span>            socket.emit(<span style="color:#5af78e">&#39;message&#39;</span>, message);
+</span></span><span style="display:flex;"><span>            <span style="color:#ff5c57">document</span>.getElementById(<span style="color:#5af78e">&#39;message&#39;</span>).value <span style="color:#ff6ac1">=</span> <span style="color:#5af78e">&#39;&#39;</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        socket.on(<span style="color:#5af78e">&#39;message&#39;</span>, <span style="color:#ff5c57">function</span>(msg) {
+</span></span><span style="display:flex;"><span>            <span style="color:#ff5c57">var</span> item <span style="color:#ff6ac1">=</span> <span style="color:#ff5c57">document</span>.createElement(<span style="color:#5af78e">&#39;li&#39;</span>);
+</span></span><span style="display:flex;"><span>            item.textContent <span style="color:#ff6ac1">=</span> msg;
+</span></span><span style="display:flex;"><span>            <span style="color:#ff5c57">document</span>.getElementById(<span style="color:#5af78e">&#39;messages&#39;</span>).appendChild(item);
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#ff6ac1">script</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#ff6ac1">head</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#ff6ac1">body</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#ff6ac1">ul</span> <span style="color:#57c7ff">id</span><span style="color:#ff6ac1">=</span><span style="color:#5af78e">&#34;messages&#34;</span>&gt;&lt;/<span style="color:#ff6ac1">ul</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#ff6ac1">input</span> <span style="color:#57c7ff">id</span><span style="color:#ff6ac1">=</span><span style="color:#5af78e">&#34;message&#34;</span> <span style="color:#57c7ff">autocomplete</span><span style="color:#ff6ac1">=</span><span style="color:#5af78e">&#34;off&#34;</span>&gt;&lt;<span style="color:#ff6ac1">button</span> <span style="color:#57c7ff">onclick</span><span style="color:#ff6ac1">=</span><span style="color:#5af78e">&#34;sendMessage()&#34;</span>&gt;Send&lt;/<span style="color:#ff6ac1">button</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#ff6ac1">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#ff6ac1">html</span>&gt;
+</span></span></code></pre></div><h3 id="running-the-application" >
+<div>
+    <a href="#running-the-application">
+        ##
+    </a>
+    Running the Application
+</div>
+</h3>
+<p>To run your application, execute the following command in your terminal:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python app.py
+</span></span></code></pre></div><p>Open your web browser and navigate to <code>http://127.0.0.1:5000/</code>. You will see the chat interface. Open multiple tabs to test the real-time messaging feature.</p>
+<h3 id="conclusion" >
+<div>
+    <a href="#conclusion">
+        ##
+    </a>
+    Conclusion
+</div>
+</h3>
+<p>In this tutorial, we covered how to install Flask-SocketIO and set up a basic application with real-time communication capabilities. You can build upon this foundation to create more complex features and applications. Happy coding!</p>
+
+        </div>
+        
+ <div id="HCB_comment_box"><a href="http://www.htmlcommentbox.com">Comment Box</a> is loading comments...</div>
+ <link rel="stylesheet" type="text/css" href="https://www.htmlcommentbox.com/static/skins/bootstrap/twitter-bootstrap.css?v=0" />
+ <script type="text/javascript" id="hcb">   if(!window.hcb_user){hcb_user={};} (function(){var s=document.createElement("script"), l=hcb_user.PAGE || (""+window.location).replace(/'/g,"%27"), h="https://www.htmlcommentbox.com";s.setAttribute("type","text/javascript");s.setAttribute("src", h+"/jread?page="+encodeURIComponent(l).replace("+","%2B")+"&mod=%241%24wq1rdBcg%24sXRfCQ2ZmeM2z6.jSTA9W0"+"&opts=16798&num=10&ts=1722513361170");if (typeof s!="undefined") document.getElementsByTagName("head")[0].appendChild(s);})();   </script>
+
+    </article>
+
+    
+    
+        
+    
+
+    
+        
+        
+            <h3 class="read-next-title noselect">Read next</h3>
+            <ul class="read-next-posts noselect">
+                
+                <li><a href="/post/08-01-24-installing-and-using-flask-on-ubuntu/">Installing and Using Flask on Ubuntu</a></li>
+                
+                <li><a href="/post/ai-blog/">Can AI write it&#39;s own Blog Posts?</a></li>
+                
+            </ul>
+        
+    
+
+    
+
+    
+        
+
+
+
+
+
+
+
+
+
+    
+
+    
+
+    
+
+        </main>
+        
+            <footer class="common-footer noselect">
+    
+    
+
+    <div class="common-footer-bottom">
+        
+
+        <div style="display: flex; align-items: center; gap:8px">
+            ©  2024 | syntaxerror - <a href="https://sntx.dev/">https://sntx.dev/</a>
+            
+        </div>
+        <div style="display:flex;align-items: center">
+            
+            
+            
+            
+            
+            
+        </div>
+        <div>
+            Powered by <a target="_blank" rel="noopener noreferrer" href="https://gohugo.io/">Hugo</a>, theme <a target="_blank" rel="noopener noreferrer" href="https://github.com/Junyi-99/hugo-theme-anubis2">Anubis2</a>.<br>
+            
+
+        </div>
+    </div>
+
+    <p class="h-card vcard">
+
+    <a href=http://localhost:1313/ class="p-name u-url url fn" rel="me"></a>
+
+    
+
+    
+</p>
+
+</footer>
+
+        
+    </div>
+</body>
+</html>

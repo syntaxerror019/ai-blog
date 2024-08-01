@@ -1,19 +1,211 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>OCI on Blog @ sntx.dev</title>
-    <link>https://blog.sntx.dev/tags/oci/</link>
-    <description>Recent content in OCI on Blog @ sntx.dev</description>
-    <generator>Hugo</generator>
+    <title>OCI on AI TECH BLOG @ sntx.dev</title>
+    <link>/tags/oci/</link>
+    <description>AI TECH BLOG @ sntx.dev (OCI)</description>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 31 Jul 2024 13:03:04 -0400</lastBuildDate>
-    <atom:link href="https://blog.sntx.dev/tags/oci/index.xml" rel="self" type="application/rss+xml" />
+    
+    <atom:link href="/tags/oci/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>Connecting to Oracle Cloud servers with VNC</title>
-      <link>https://blog.sntx.dev/post/vnc-oracle/</link>
+      <link>/post/vnc-oracle/</link>
       <pubDate>Wed, 31 Jul 2024 13:03:04 -0400</pubDate>
-      <guid>https://blog.sntx.dev/post/vnc-oracle/</guid>
-      <description>What is Oracle Cloud? Oracle Cloud is a cloud computing service offered by Oracle Corporation. It provides a range of cloud services, including:&#xA;Infrastructure as a Service (IaaS): This includes virtual machines, storage, and networking resources. Platform as a Service (PaaS): Offers tools for developing, managing, and deploying applications, including databases, application development, and integration services. Software as a Service (SaaS): Provides ready-to-use software applications hosted in the cloud, such as enterprise resource planning (ERP), human capital management (HCM), and customer relationship management (CRM) applications.</description>
+      
+      <guid>/post/vnc-oracle/</guid>
+      <description>&lt;h2 id=&#34;what-is-oracle-cloud&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#what-is-oracle-cloud&#34;&gt;
+        #
+    &lt;/a&gt;
+    What is Oracle Cloud?
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Oracle Cloud&lt;/strong&gt; is a cloud computing service offered by Oracle Corporation. It provides a range of cloud services, including:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Infrastructure as a Service (IaaS)&lt;/strong&gt;: This includes virtual machines, storage, and networking resources.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Platform as a Service (PaaS)&lt;/strong&gt;: Offers tools for developing, managing, and deploying applications, including databases, application development, and integration services.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Software as a Service (SaaS)&lt;/strong&gt;: Provides ready-to-use software applications hosted in the cloud, such as enterprise resource planning (ERP), human capital management (HCM), and customer relationship management (CRM) applications.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Oracle Cloud is known for its strong emphasis on database solutions, high-performance computing, and enterprise applications. It aims to help businesses reduce IT costs, scale their operations, and innovate faster by leveraging cloud technologies.&lt;/p&gt;
+&lt;h2 id=&#34;what-is-a-vnc&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#what-is-a-vnc&#34;&gt;
+        #
+    &lt;/a&gt;
+    What is a VNC?
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;VNC (Virtual Network Computing)&lt;/strong&gt; is a graphical desktop-sharing system that allows remote control of a computer over a network. It operates by transmitting the keyboard and mouse events from one computer to another, and relaying the graphical screen updates back in the other direction.&lt;/p&gt;
+&lt;p&gt;Key features of VNC include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Remote Access&lt;/strong&gt;: Users can access and control a remote computer from anywhere.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cross-Platform Compatibility&lt;/strong&gt;: VNC clients and servers are available for various operating systems, including Windows, macOS, and Linux.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Security&lt;/strong&gt;: VNC can be secured using encryption and authentication methods to protect the connection.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Common uses of VNC include remote technical support, accessing files and applications on a remote machine, and managing servers.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;introduction&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#introduction&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Introduction
+&lt;/div&gt;
+&lt;/h1&gt;
+&lt;p&gt;SSH-ing into OCI (Oracle Cloud Infrastructure) servers is a breeze. Simply download the private key file, and load it into your favorite SSH client software. Boom! You&amp;rsquo;re in and off you go!&lt;/p&gt;
+&lt;p&gt;But what if your application needs&amp;hellip; GUI&lt;/p&gt;
+&lt;p&gt;Personally having a difficult time running GUI applications on my Free-Tier server, I found that a VNC connection would be necessary. After looking online for tutorials or general help, I quickly realized there was no straight answer. People said things that contradicted one another, and none of their ideas worked. In the end, I figured it out. I write this in hopes of helping those few people like me struggling with similar problems.&lt;/p&gt;
+&lt;h2 id=&#34;supplies&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#supplies&#34;&gt;
+        #
+    &lt;/a&gt;
+    Supplies
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;You will need a running OCI server instance (Linux in this case (e.g. Ubuntu))&lt;/li&gt;
+&lt;li&gt;A working SSH connection to set up the VNC software and perform necessary installs.&lt;/li&gt;
+&lt;li&gt;A VNC viewer for testing and eventually establishing connection when appropriate.&lt;/li&gt;
+&lt;li&gt;This tutorial&amp;hellip;😂&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;connecting-to-your-server-via-ssh&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#connecting-to-your-server-via-ssh&#34;&gt;
+        #
+    &lt;/a&gt;
+    Connecting to Your Server Via SSH
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;If you have not already established a connection with your server, now is the time to do so! If you already have, skip to the next step.&lt;/p&gt;
+&lt;p&gt;Using your favorite SSH client software (I will be using PuTTY for Windows) enter the IP address and upload the proper authentication credentials (Private key file)&lt;/p&gt;
+&lt;p&gt;If you are using PuTTY, you will need to use the built-in PuTTYgen software that comes with PuTTY during install. The .key file provided by OCI does not work by default in PuTTY. Using PuTTYgen, you can convert it.&lt;/p&gt;
+&lt;p&gt;Open PuTTYgen and load the .key file provided by OCI during the server instance creation.&lt;br&gt;
+&lt;img src=&#34;https://content.instructables.com/FED/JPGD/LZ8FHYNG/FEDJPGDLZ8FHYNG.png?auto=webp&amp;amp;frame=1&amp;amp;fit=bounds&amp;amp;md=eca4267c9d7f67ae14ed20eb297be9d8&#34; alt=&#34;PuttyGen&#34;&gt;
+&lt;img src=&#34;https://content.instructables.com/FWC/4SK0/LZ8FHYNS/FWC4SK0LZ8FHYNS.png?auto=webp&amp;amp;frame=1&amp;amp;fit=bounds&amp;amp;md=57b4fb531e7bb8389e3cd3ec81da3593&#34; alt=&#34;PuttyGenLoadingFile&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Follow the pop-up when it appears.&lt;br&gt;
+&lt;img src=&#34;https://content.instructables.com/F7N/ZSDD/LZ8FHYO0/F7NZSDDLZ8FHYO0.png?auto=webp&amp;amp;frame=1&amp;amp;fit=bounds&amp;amp;md=c6b0dcef32fbf4be6fb23f48d7fbcbfa&#34; alt=&#34;PUTTYpopup&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Click Save private key button to save it to your computer. This will now work in PuTTY.&lt;/p&gt;
+&lt;p&gt;Now, open the main PuTTY software and load the private key. This can be done by navigating through the tree menu in PuTTY to:
+&lt;strong&gt;Connection &amp;gt; SSH &amp;gt;Auth &amp;gt; Credentials&lt;/strong&gt;
+&lt;img src=&#34;https://content.instructables.com/FHO/ANOC/LZ8FHYNA/FHOANOCLZ8FHYNA.png?auto=webp&amp;amp;frame=1&amp;amp;fit=bounds&amp;amp;md=4e46743963271fb53c1e812cbb2bd57e&#34; alt=&#34;PuttyLoadFile&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Once the file is loaded, be sure the correct IP address is saved (in the main session tab)
+&lt;img src=&#34;https://content.instructables.com/FJQ/YWRT/LZ8FHYNB/FJQYWRTLZ8FHYNB.png?auto=webp&amp;amp;frame=1&amp;amp;fit=bounds&amp;amp;md=848604648564ffd3c576815482b5d6f7&#34; alt=&#34;PuttyIPconfig&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Save the PuTTY config with a name if desired.&lt;br&gt;
+Press Open to initialize the connection to the server&amp;hellip;&lt;br&gt;
+&lt;img src=&#34;https://content.instructables.com/FUE/RX31/LZ8FHYO1/FUERX31LZ8FHYO1.png?auto=webp&amp;amp;frame=1&amp;amp;fit=bounds&amp;amp;md=8284f39b1b95d5938ffb7505e65889c3&#34; alt=&#34;PuttyOpen&#34;&gt;&lt;/p&gt;
+&lt;p&gt;If a message appears warning you about how the key is not in the cache, ignore it and click Accept connection.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;install-the-vnc-server&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#install-the-vnc-server&#34;&gt;
+        #
+    &lt;/a&gt;
+    Install the VNC Server
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;Once connected to your server via SSH, we can start running commands to install the VNC server.&lt;/p&gt;
+&lt;p&gt;Run the following command to update and upgrade your system packages/ dependencies. (This step IS important!)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt-get update &lt;span style=&#34;color:#ff6ac1&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo apt-get upgrade
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Install the VNC server and lightweight display manager. We will use TightVNC here as it is lightweight and easy to use.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt-get install lxde-core lxterminal tightvncserver
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Set up the VNC server password by running: (Type &amp;ldquo;n&amp;rdquo; if it asks if you want a view-only password)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;vncserver
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;End that VNC instance, as we need to configure it a bit more:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;vncserver -kill :1
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;set-up-vnc-startup-script&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#set-up-vnc-startup-script&#34;&gt;
+        #
+    &lt;/a&gt;
+    Set Up VNC Startup Script
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;Copy the existing startup command as a backup just in case:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mv ~/.vnc/xstartup ~/.vnc/xstartup.bak
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Create a new startup scrpt: (This is the one that will be actually used):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;nano ~/.vnc/xstartup
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Add the following lines to the file and save it (Save it by pressing CTRL+X, y, Enter) [Don&amp;rsquo;t forget the shebang too!]&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#78787e&#34;&gt;#!/bin/bash
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#78787e&#34;&gt;&lt;/span&gt;xrdb &lt;span style=&#34;color:#ff5c57&#34;&gt;$HOME&lt;/span&gt;/.Xresources
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;startlxde &amp;amp;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Make the script executable:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;chmod +x ~/.vnc/xstartup
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;configure-oracle-ingress-rules-vcn&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#configure-oracle-ingress-rules-vcn&#34;&gt;
+        #
+    &lt;/a&gt;
+    Configure Oracle Ingress Rules (VCN)
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;In order for the VCN (not to be confused with VNC lol 😂) to allow external connections on port 5901 (default VNC port) you will need to configure it appropriately. &lt;em&gt;This can be tricky so follow this Step-By-Step to ensure proper configuration!&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Log into the Oracle Cloud dashboard and navigate to the Virtual cloud networks (VCN) page.
+&lt;img src=&#34;https://content.instructables.com/FRI/WTIP/LZ8FI2KI/FRIWTIPLZ8FI2KI.png?auto=webp&amp;amp;frame=1&amp;amp;width=1024&amp;amp;fit=bounds&amp;amp;md=098c7b2adaf25ecc9794e60eb832e890&#34; alt=&#34;OracleVCN&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Click the main VCN link. For example &lt;a href=&#34;https://sntx.dev/&#34;&gt;vcn-20240307-2120&lt;/a&gt;&lt;br&gt;
+Click the main subnet link. For example &lt;a href=&#34;https://sntx.dev/&#34;&gt;subnet-20240307-2120&lt;/a&gt;&lt;br&gt;
+Click the Default Security List link. For example &lt;a href=&#34;https://sntx.dev/&#34;&gt;Default Security List for vcn-20240307-2120&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;And finally you are at the Ingress Rules page of your VCN! Click the &amp;ldquo;Add Ingress Rules&amp;rdquo; button&lt;br&gt;
+&lt;img src=&#34;https://content.instructables.com/F4N/KPE9/LZ8FI2L3/F4NKPE9LZ8FI2L3.png?auto=webp&amp;amp;frame=1&amp;amp;width=1024&amp;amp;fit=bounds&amp;amp;md=6953055a48161c44115add5ccef88d5b&#34; alt=&#34;IngressAdd&#34;&gt;&lt;/p&gt;
+&lt;p&gt;And follow the configuration specified below. (This is very important!)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Stateless:&lt;/strong&gt; Checked&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Source Type:&lt;/strong&gt; CIDR&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Source CIDR:&lt;/strong&gt; 0.0.0.0/0&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;IP Protocol:&lt;/strong&gt; TCP&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Source port range:&lt;/strong&gt; (leave-blank)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Destination Port Range:&lt;/strong&gt; 5901&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Description:&lt;/strong&gt; VNC_SETUP&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Now, if done correctly, you should have an ingress rule that looks something like the following:
+&lt;img src=&#34;https://content.instructables.com/FHJ/QVJI/LZ8FI2LP/FHJQVJILZ8FI2LP.png?auto=webp&amp;amp;frame=1&amp;amp;width=1024&amp;amp;fit=bounds&amp;amp;md=5e011100d752492e9418eb6d798da58c&#34; alt=&#34;Ingress&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Here are the &lt;a href=&#34;https://docs.oracle.com/en-us/iaas/developer-tutorials/tutorials/apache-on-ubuntu/01oci-ubuntu-apache-summary.htm&#34;&gt;official Oracle Cloud docs&lt;/a&gt; on a related topic.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;configure-ubuntu-firewall&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#configure-ubuntu-firewall&#34;&gt;
+        #
+    &lt;/a&gt;
+    Configure Ubuntu Firewall
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;Once you have finished setting up the Ingress Rules, jump back to the SSH window to execute a couple more commands on you server to get it working with the VNC setup.&lt;/p&gt;
+&lt;p&gt;Run the following commands in your terminal (via SSH) to let the Ubuntu iptables know that port 5901 should allow traffic:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo iptables -I INPUT &lt;span style=&#34;color:#ff9f43&#34;&gt;6&lt;/span&gt; -m state --state NEW -p tcp --dport &lt;span style=&#34;color:#ff9f43&#34;&gt;5901&lt;/span&gt; -j ACCEPT
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo netfilter-persistent save
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Here are the &lt;a href=&#34;https://docs.oracle.com/en-us/iaas/developer-tutorials/tutorials/apache-on-ubuntu/01oci-ubuntu-apache-summary.htm&#34;&gt;official Oracle Cloud docs&lt;/a&gt; on a related topic.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;start-vnc-server-and-connect&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#start-vnc-server-and-connect&#34;&gt;
+        #
+    &lt;/a&gt;
+    Start VNC Server and Connect!
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;Great! You&amp;rsquo;ve done it! 🥳👏 All you need to do now is start up the server and connect.&lt;/p&gt;
+&lt;p&gt;In the SSH terminal, type:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;vncserver
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;or for additional configuration use this variation: (This example is suitable for limited-resource servers)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;vncserver :1 -geometry 1024x768 -depth &lt;span style=&#34;color:#ff9f43&#34;&gt;16&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now, open up a VNC viewer/ client on your local machine (I used RealVNC, a popular choice) and enter the Server&amp;rsquo;s IP address in the top bar.&lt;br&gt;
+&lt;img src=&#34;https://content.instructables.com/F7O/09FR/LZ8FI2LR/F7O09FRLZ8FI2LR.png?auto=webp&amp;amp;frame=1&amp;amp;fit=bounds&amp;amp;md=1b6d4f03d30cd21b665091931b1dc205&#34; alt=&#34;VNCIP&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Hit enter, and the connection should be starting. If you see warnings about encryption, press Continue.&lt;br&gt;
+&lt;img src=&#34;https://content.instructables.com/FFJ/YT2D/LZ8FI2R5/FFJYT2DLZ8FI2R5.png?auto=webp&amp;amp;frame=1&amp;amp;fit=bounds&amp;amp;md=8a5779ba98c7db74cbe6e79274628c4a&#34; alt=&#34;VNCWARN&#34;&gt;&lt;/p&gt;
+&lt;p&gt;When prompted to enter your password, it is the same one you entered back in step 2. It is NOT the same one as your server password (unless you made them the same&amp;hellip;)&lt;br&gt;
+&lt;img src=&#34;https://content.instructables.com/FFG/L78X/LZ8FI2RX/FFGL78XLZ8FI2RX.png?auto=webp&amp;amp;frame=1&amp;amp;fit=bounds&amp;amp;md=5c2a631f87fd6192fffe2629ce5500f4&#34; alt=&#34;VNCPASS&#34;&gt;&lt;/p&gt;
+&lt;p&gt;You should now see your Server&amp;rsquo;s Desktop! Congratulations! You&amp;rsquo;ve done it! 🥳😁🙌👌👏&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://content.instructables.com/FMI/TLFQ/LZ8FI2RY/FMITLFQLZ8FI2RY.png?auto=webp&amp;amp;frame=1&amp;amp;width=1024&amp;amp;fit=bounds&amp;amp;md=083c90968662776d295b9290acc85181&#34; alt=&#34;VNCDESKTOP&#34;&gt;&lt;/p&gt;
+&lt;p&gt;If you encounter any issues, please leave a comment below! Thanks!&lt;/p&gt;
+</description>
     </item>
+    
   </channel>
 </rss>

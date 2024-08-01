@@ -1,19 +1,59 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Media on Blog @ sntx.dev</title>
-    <link>https://blog.sntx.dev/tags/media/</link>
-    <description>Recent content in Media on Blog @ sntx.dev</description>
-    <generator>Hugo</generator>
+    <title>Media on AI Tech Blog @ sntx.dev</title>
+    <link>/tags/media/</link>
+    <description>AI Tech Blog @ sntx.dev (Media)</description>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 31 Jul 2024 18:12:40 -0400</lastBuildDate>
-    <atom:link href="https://blog.sntx.dev/tags/media/index.xml" rel="self" type="application/rss+xml" />
+    
+    <atom:link href="/tags/media/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>Can AI write it&#39;s own Blog Posts?</title>
-      <link>https://blog.sntx.dev/post/ai-blog/</link>
+      <link>/post/ai-blog/</link>
       <pubDate>Wed, 31 Jul 2024 18:12:40 -0400</pubDate>
-      <guid>https://blog.sntx.dev/post/ai-blog/</guid>
-      <description>Introduction Albeit, this article falls outwards of my typical writing style, which normally includes abundant code blocks and programming know-how, but I thought I would give it a try nevertheless. (omg this sounds AI written already i promise its not)&#xA;The idea of AI being able to write it&amp;rsquo;s own social media posts, more specifically instructional posts such as tutorials and guides has plagued my brain from time to time for the past year.</description>
+      
+      <guid>/post/ai-blog/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#introduction&#34;&gt;
+        #
+    &lt;/a&gt;
+    Introduction
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;Albeit, this article falls outwards of my typical writing style, which normally includes abundant code blocks and programming know-how, but I thought I would give it a try nevertheless. (omg this sounds AI written already i promise its not)&lt;/p&gt;
+&lt;p&gt;The idea of AI being able to write it&amp;rsquo;s own social media posts, more specifically instructional posts such as tutorials and guides has plagued my brain from time to time for the past year. I mean it can write your English essays and it has the ability to generate life-like, photorealistic images just based on some textual inputs. How hard could writing a simple article be?&lt;/p&gt;
+&lt;p&gt;I tried a similar thing a while back, using OpenAI&amp;rsquo;s ChatGPT API and posting it&amp;rsquo;s responses onto instructables.com using their (un)official API. This unfortunately did not work reliably and generated some strange feedback from readers, many saying my choice of wording was &amp;ldquo;odd.&amp;rdquo;
+The project was abandoned (like many of my others) and I had no intentions of picking it up again until&amp;hellip;&lt;/p&gt;
+&lt;h2 id=&#34;the-era-of-hugo&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#the-era-of-hugo&#34;&gt;
+        #
+    &lt;/a&gt;
+    The Era of Hugo
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;After recently discovering Hugo and it&amp;rsquo;s amazing open-source capabilities, I had another go at giving AI a media voice. With Hugo&amp;rsquo;s easy to use command line and ChatGPT&amp;rsquo;s ability to seamlessly respond in MarkDown, it seemed like a match made in heaven.&lt;/p&gt;
+&lt;p&gt;All I had to do was write a little script that calls the LLM and then CTRL+C, CTRL+V it&amp;rsquo;s responses into a new post. Then it was easy, I could simply (re)compile the Hugo site with the elementary &lt;code&gt;hugo&lt;/code&gt; command and then use git to push new updates to the repo. Then, oh so beloved Vercel would handle the rest, making the site live to the public.&lt;/p&gt;
+&lt;h2 id=&#34;the-issues&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#the-issues&#34;&gt;
+        #
+    &lt;/a&gt;
+    The Issues
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;Now that AI has a voice, what will it do? Will it write about what I ask of it? Or will it generate nonsense that only confuses readers? Here was the first issue I came across; &lt;strong&gt;fact-checking&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;How on Earth do I verify the validity of the bot&amp;rsquo;s tutorials? The thought of forcing my friends to follow the possibly-rubbish guides to see their outcomes crossed my mind more than twice&amp;hellip; The wisest choice of all is to have myself fact check them all individually. When a new article is written and published by AI, it will have a banner claiming that &amp;ldquo;This AI-written article has not yet been verified.&amp;rdquo; This puts the reader in choice of proceeding or not. Ideally, I can have the articles checked within 1-2 business days. Afterwards, the banner will be removed and replaced by a similar one claiming that the article has been fact-checked by a human.&lt;/p&gt;
+&lt;p&gt;Although the reputability of the AI is most definetely my biggest concern, another pretty important problem that quickly surfaced was hosting.
+Now this may not seem of such difficulty to most, (yes I hear you yelling &amp;lsquo;VPS&amp;rsquo; over there calm down) finding a &lt;strong&gt;free&lt;/strong&gt; VPS provider that doesn&amp;rsquo;t have spontaneous uptime, and has a support team that speaks English is a bit harder than you might initially think. Luckily, OCI (Oracle Cloud Infratructures) came to the rescue with their Always-Free tier that allows VMs to be run 24/7 at the cost of limited performance, which should be fine for me.&lt;/p&gt;
+&lt;p&gt;Now this is definetely not all of the issues I have faced, nor will it be the last I face on this project. At the time of writing this article, I haven&amp;rsquo;t even finished the project yet, which leaves abundant time for more issues to suface. I&amp;rsquo;ll be sure to keep this article up-to-date on my latest failures and struggles though!&lt;/p&gt;
+</description>
     </item>
+    
   </channel>
 </rss>

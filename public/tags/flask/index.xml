@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Flask on AI Tech Blog @ sntx.dev</title>
+    <link>/tags/flask/</link>
+    <description>AI Tech Blog @ sntx.dev (Flask)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 01 Aug 2024 09:43:27 -0400</lastBuildDate>
+    
+    <atom:link href="/tags/flask/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Installing and Using Flask on Ubuntu</title>
+      <link>/post/08-01-24-installing-and-using-flask-on-ubuntu/</link>
+      <pubDate>Thu, 01 Aug 2024 09:43:27 -0400</pubDate>
+      
+      <guid>/post/08-01-24-installing-and-using-flask-on-ubuntu/</guid>
+      <description>&lt;p&gt;Tags: Ubuntu, Web Development, app.route(&amp;rsquo;/&amp;rsquo;)
+def hello():
+return &amp;lsquo;Hello, Flask!&amp;rsquo;&lt;/p&gt;
+&lt;p&gt;if &lt;strong&gt;name&lt;/strong&gt; == &amp;lsquo;&lt;strong&gt;main&lt;/strong&gt;&amp;rsquo;:
+app.run()&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;
+#### Step 4: Run the Flask Application
+To run the Flask application, go back to the terminal and navigate to the directory where `app.py` is located. Run the following command:
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;$ python app.py&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;
+You should see output similar to the following:
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;
+This means that the Flask application is running locally on your machine. You can access it by opening a web browser and navigating to `http://127.0.0.1:5000/`. You should see the message &amp;#34;Hello, Flask!&amp;#34; displayed in the browser.
+
+#### Conclusion
+Congratulations! You have successfully installed and used Flask on Ubuntu. You can now start building web applications using Flask and Python.
+
+Remember to deactivate the virtual environment when you&amp;#39;re done working on your Flask project. You can do this by running the following command:
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;$ deactivate&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;
+Happy coding!
+
+[[1]](https://www.markdownguide.org/)
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,19 +1,436 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>AI on Blog @ sntx.dev</title>
-    <link>https://blog.sntx.dev/tags/ai/</link>
-    <description>Recent content in AI on Blog @ sntx.dev</description>
-    <generator>Hugo</generator>
+    <title>AI on AI Tech Blog @ sntx.dev</title>
+    <link>/tags/ai/</link>
+    <description>AI Tech Blog @ sntx.dev (AI)</description>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 31 Jul 2024 18:12:40 -0400</lastBuildDate>
-    <atom:link href="https://blog.sntx.dev/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 01 Aug 2024 10:06:19 -0400</lastBuildDate>
+    
+    <atom:link href="/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Installing and Using OpenCV with Python on Windows</title>
+      <link>/post/08-01-24-installing-and-using-opencv-with-python-on-windows/</link>
+      <pubDate>Thu, 01 Aug 2024 10:06:19 -0400</pubDate>
+      
+      <guid>/post/08-01-24-installing-and-using-opencv-with-python-on-windows/</guid>
+      <description>&lt;p&gt;In this tutorial, we will guide you through the process of installing OpenCV, a powerful library for computer vision tasks, on your Windows machine. We will cover the prerequisites, installation steps using pip, and provide a basic example to help you get started with OpenCV in Python.&lt;/p&gt;
+&lt;h2 id=&#34;prerequisites&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#prerequisites&#34;&gt;
+        #
+    &lt;/a&gt;
+    Prerequisites
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;Before we begin, ensure you have the following installed on your Windows system:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Python&lt;/strong&gt;: Download and install Python from the official website &lt;a href=&#34;https://www.python.org/downloads/&#34;&gt;python.org&lt;/a&gt;. Ensure that you check the box to add Python to your PATH during installation.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Pip&lt;/strong&gt;: Pip is usually included with Python installations. You can verify its installation by running the following command in your Command Prompt:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pip --version
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;NumPy&lt;/strong&gt;: OpenCV relies on NumPy. You can install it using pip:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pip install numpy
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;step-1-install-opencv&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#step-1-install-opencv&#34;&gt;
+        #
+    &lt;/a&gt;
+    Step 1: Install OpenCV
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;Now that you have Python and NumPy installed, you can install OpenCV. Open your Command Prompt and run the following command:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pip install opencv-python
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If you need the additional contrib modules (which include extra functionalities), run:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pip install opencv-contrib-python
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;step-2-verify-the-installation&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#step-2-verify-the-installation&#34;&gt;
+        #
+    &lt;/a&gt;
+    Step 2: Verify the Installation
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;To ensure OpenCV is installed correctly, you can run a simple Python script. Open your favorite text editor or IDE and create a new Python file (e.g., &lt;code&gt;test_opencv.py&lt;/code&gt;). Add the following code:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;import&lt;/span&gt; cv2
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff5c57&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;OpenCV version:&amp;#34;&lt;/span&gt;, cv2&lt;span style=&#34;color:#ff6ac1&#34;&gt;.&lt;/span&gt;__version__)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Save the file and run it from your Command Prompt:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;python test_opencv.py
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You should see the installed OpenCV version printed on the screen.&lt;/p&gt;
+&lt;h2 id=&#34;step-3-basic-usage-example&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#step-3-basic-usage-example&#34;&gt;
+        #
+    &lt;/a&gt;
+    Step 3: Basic Usage Example
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;Now that OpenCV is installed, let&amp;rsquo;s create a simple program that reads an image and displays it in a window.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Create a new Python file (e.g., &lt;code&gt;display_image.py&lt;/code&gt;) and add the following code:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;import&lt;/span&gt; cv2
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#78787e&#34;&gt;# Load an image&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;image &lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt; cv2&lt;span style=&#34;color:#ff6ac1&#34;&gt;.&lt;/span&gt;imread(&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;path_to_your_image.jpg&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#78787e&#34;&gt;# Display the image in a window&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cv2&lt;span style=&#34;color:#ff6ac1&#34;&gt;.&lt;/span&gt;imshow(&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;Image&amp;#39;&lt;/span&gt;, image)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#78787e&#34;&gt;# Wait for a key press and close the window&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cv2&lt;span style=&#34;color:#ff6ac1&#34;&gt;.&lt;/span&gt;waitKey(&lt;span style=&#34;color:#ff9f43&#34;&gt;0&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cv2&lt;span style=&#34;color:#ff6ac1&#34;&gt;.&lt;/span&gt;destroyAllWindows()
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Replace &lt;code&gt;&#39;path_to_your_image.jpg&#39;&lt;/code&gt; with the actual path to an image file on your system.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Run the script from Command Prompt:&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;python display_image.py
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You should see a window pop up displaying the image you selected.&lt;/p&gt;
+&lt;h2 id=&#34;conclusion&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#conclusion&#34;&gt;
+        #
+    &lt;/a&gt;
+    Conclusion
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;Congratulations! You have successfully installed OpenCV on your Windows machine and run your first basic image display program. From here, you can explore more features of OpenCV, such as image processing, video capturing, and more complex computer vision tasks. Happy coding!&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;&lt;strong&gt;Please note that this article was written by AI and may contain a mistake, as it has not yet been reviewed by humans.&lt;/strong&gt;&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;&lt;strong&gt;This banner will be removed after human verification for accuracy, which usually takes between 1-3 business days.&lt;/strong&gt;&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;&lt;strong&gt;If you encounter any issues or find any flaws, please leave a comment down below for reference, and we can help you out!&lt;/strong&gt;&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;hr&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Installing and Using Flask-SocketIO: A Step-by-Step Guide</title>
+      <link>/post/08-01-24-installing-and-using-flask-socketio-a-step-by-step-guide/</link>
+      <pubDate>Thu, 01 Aug 2024 09:59:13 -0400</pubDate>
+      
+      <guid>/post/08-01-24-installing-and-using-flask-socketio-a-step-by-step-guide/</guid>
+      <description>&lt;p&gt;In this article, we will explore how to install Flask-SocketIO, a powerful extension that enables real-time communication between clients and servers in Flask applications. We will walk through the installation process, setting up a basic Flask application with SocketIO, and demonstrate how to implement real-time features such as chat functionality.&lt;/p&gt;
+&lt;h2 id=&#34;table-of-contents&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#table-of-contents&#34;&gt;
+        #
+    &lt;/a&gt;
+    Table of Contents
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;#prerequisites&#34;&gt;Prerequisites&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#installing-flask-and-flask-socketio&#34;&gt;Installing Flask and Flask-SocketIO&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#creating-a-basic-flask-application&#34;&gt;Creating a Basic Flask Application&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#implementing-socketio-for-real-time-communication&#34;&gt;Implementing SocketIO for Real-Time Communication&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#running-the-application&#34;&gt;Running the Application&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#conclusion&#34;&gt;Conclusion&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;prerequisites&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#prerequisites&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Prerequisites
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;Before we begin, ensure you have the following installed:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Python 3.6 or later&lt;/li&gt;
+&lt;li&gt;pip (Python package installer)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;installing-flask-and-flask-socketio&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#installing-flask-and-flask-socketio&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Installing Flask and Flask-SocketIO
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;To get started, you need to install Flask and Flask-SocketIO. Open your terminal and run the following commands:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pip install Flask
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pip install flask-socketio
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;creating-a-basic-flask-application&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#creating-a-basic-flask-application&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Creating a Basic Flask Application
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;Create a new directory for your project and navigate into it:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mkdir flask_socketio_app
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff5c57&#34;&gt;cd&lt;/span&gt; flask_socketio_app
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now, create a new file named &lt;code&gt;app.py&lt;/code&gt; and add the following code:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;from&lt;/span&gt; flask &lt;span style=&#34;color:#ff6ac1&#34;&gt;import&lt;/span&gt; Flask, render_template
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;from&lt;/span&gt; flask_socketio &lt;span style=&#34;color:#ff6ac1&#34;&gt;import&lt;/span&gt; SocketIO
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;app &lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt; Flask(__name__)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;socketio &lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt; SocketIO(app)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff9f43&#34;&gt;@app.route&lt;/span&gt;(&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;/&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#57c7ff&#34;&gt;index&lt;/span&gt;():
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff6ac1&#34;&gt;return&lt;/span&gt; render_template(&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;index.html&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;if&lt;/span&gt; __name__ &lt;span style=&#34;color:#ff6ac1&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    socketio&lt;span style=&#34;color:#ff6ac1&#34;&gt;.&lt;/span&gt;run(app)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;implementing-socketio-for-real-time-communication&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#implementing-socketio-for-real-time-communication&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Implementing SocketIO for Real-Time Communication
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;Now, let&amp;rsquo;s create a simple HTML template to handle real-time communication. Create a new folder named &lt;code&gt;templates&lt;/code&gt; and within it, create a file named &lt;code&gt;index.html&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#78787e&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;html&lt;/span&gt; &lt;span style=&#34;color:#57c7ff&#34;&gt;lang&lt;/span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;en&amp;#34;&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;head&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &amp;lt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;meta&lt;/span&gt; &lt;span style=&#34;color:#57c7ff&#34;&gt;charset&lt;/span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;UTF-8&amp;#34;&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &amp;lt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;meta&lt;/span&gt; &lt;span style=&#34;color:#57c7ff&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;viewport&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#57c7ff&#34;&gt;content&lt;/span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;width=device-width, initial-scale=1.0&amp;#34;&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &amp;lt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;title&lt;/span&gt;&amp;gt;Flask-SocketIO Chat&amp;lt;/&lt;span style=&#34;color:#ff6ac1&#34;&gt;title&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &amp;lt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;script&lt;/span&gt; &lt;span style=&#34;color:#57c7ff&#34;&gt;src&lt;/span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js&amp;#34;&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color:#ff6ac1&#34;&gt;script&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &amp;lt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;script&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ff5c57&#34;&gt;var&lt;/span&gt; socket &lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt; io();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ff5c57&#34;&gt;function&lt;/span&gt; sendMessage() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#ff5c57&#34;&gt;var&lt;/span&gt; message &lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ff5c57&#34;&gt;document&lt;/span&gt;.getElementById(&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;message&amp;#39;&lt;/span&gt;).value;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            socket.emit(&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;message&amp;#39;&lt;/span&gt;, message);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#ff5c57&#34;&gt;document&lt;/span&gt;.getElementById(&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;message&amp;#39;&lt;/span&gt;).value &lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        socket.on(&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;message&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#ff5c57&#34;&gt;function&lt;/span&gt;(msg) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#ff5c57&#34;&gt;var&lt;/span&gt; item &lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ff5c57&#34;&gt;document&lt;/span&gt;.createElement(&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;li&amp;#39;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            item.textContent &lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt; msg;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#ff5c57&#34;&gt;document&lt;/span&gt;.getElementById(&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;messages&amp;#39;&lt;/span&gt;).appendChild(item);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        });
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &amp;lt;/&lt;span style=&#34;color:#ff6ac1&#34;&gt;script&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;/&lt;span style=&#34;color:#ff6ac1&#34;&gt;head&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;body&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &amp;lt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;ul&lt;/span&gt; &lt;span style=&#34;color:#57c7ff&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;messages&amp;#34;&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color:#ff6ac1&#34;&gt;ul&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &amp;lt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#57c7ff&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;message&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#57c7ff&#34;&gt;autocomplete&lt;/span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;off&amp;#34;&lt;/span&gt;&amp;gt;&amp;lt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;button&lt;/span&gt; &lt;span style=&#34;color:#57c7ff&#34;&gt;onclick&lt;/span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;sendMessage()&amp;#34;&lt;/span&gt;&amp;gt;Send&amp;lt;/&lt;span style=&#34;color:#ff6ac1&#34;&gt;button&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;/&lt;span style=&#34;color:#ff6ac1&#34;&gt;body&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;/&lt;span style=&#34;color:#ff6ac1&#34;&gt;html&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;running-the-application&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#running-the-application&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Running the Application
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;To run your application, execute the following command in your terminal:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;python app.py
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Open your web browser and navigate to &lt;code&gt;http://127.0.0.1:5000/&lt;/code&gt;. You will see the chat interface. Open multiple tabs to test the real-time messaging feature.&lt;/p&gt;
+&lt;h3 id=&#34;conclusion&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#conclusion&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Conclusion
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;In this tutorial, we covered how to install Flask-SocketIO and set up a basic application with real-time communication capabilities. You can build upon this foundation to create more complex features and applications. Happy coding!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Installing and Using Flask on Ubuntu</title>
+      <link>/post/08-01-24-installing-and-using-flask-on-ubuntu/</link>
+      <pubDate>Thu, 01 Aug 2024 09:51:34 -0400</pubDate>
+      
+      <guid>/post/08-01-24-installing-and-using-flask-on-ubuntu/</guid>
+      <description>&lt;h1 id=&#34;heading&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#heading&#34;&gt;
+        ##
+    &lt;/a&gt;
+    
+&lt;/div&gt;
+&lt;/h1&gt;
+&lt;p&gt;This tutorial will guide you through the process of installing Flask, a popular web framework for Python, on an Ubuntu system. We will cover the prerequisites, installation steps, and a basic example of creating a simple Flask application to get you started.&lt;/p&gt;
+&lt;h2 id=&#34;prerequisites&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#prerequisites&#34;&gt;
+        #
+    &lt;/a&gt;
+    Prerequisites
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;Before you begin, ensure that you have the following installed on your Ubuntu system:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Python 3&lt;/strong&gt;: Flask requires Python 3. You can check if it&amp;rsquo;s installed by running:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;python3 --version
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If it&amp;rsquo;s not installed, you can install it using:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt update
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install python3
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;pip&lt;/strong&gt;: This is the package installer for Python. Check if it&amp;rsquo;s installed with:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pip3 --version
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If not, install it using:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install python3-pip
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;step-1-create-a-virtual-environment&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#step-1-create-a-virtual-environment&#34;&gt;
+        #
+    &lt;/a&gt;
+    Step 1: Create a Virtual Environment
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;It&amp;rsquo;s a good practice to create a virtual environment for your Flask projects to manage dependencies separately. Follow these steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Install &lt;code&gt;venv&lt;/code&gt; module&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install python3-venv
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Create a new directory for your project&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mkdir my_flask_app
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff5c57&#34;&gt;cd&lt;/span&gt; my_flask_app
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Create a virtual environment&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;python3 -m venv venv
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Activate the virtual environment&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff5c57&#34;&gt;source&lt;/span&gt; venv/bin/activate
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;step-2-install-flask&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#step-2-install-flask&#34;&gt;
+        #
+    &lt;/a&gt;
+    Step 2: Install Flask
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;With the virtual environment activated, you can now install Flask using pip:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pip install Flask
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;To verify that Flask has been installed, you can run:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pip show Flask
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;step-3-create-a-simple-flask-application&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#step-3-create-a-simple-flask-application&#34;&gt;
+        #
+    &lt;/a&gt;
+    Step 3: Create a Simple Flask Application
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;Now that Flask is installed, let&amp;rsquo;s create a simple web application:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Create a new file called &lt;code&gt;app.py&lt;/code&gt;&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;touch app.py
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Open &lt;code&gt;app.py&lt;/code&gt; in your text editor and add the following code&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;from&lt;/span&gt; flask &lt;span style=&#34;color:#ff6ac1&#34;&gt;import&lt;/span&gt; Flask
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;app &lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt; Flask(__name__)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff9f43&#34;&gt;@app.route&lt;/span&gt;(&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;/&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#57c7ff&#34;&gt;hello_world&lt;/span&gt;():
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff6ac1&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;Hello, World!&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;if&lt;/span&gt; __name__ &lt;span style=&#34;color:#ff6ac1&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    app&lt;span style=&#34;color:#ff6ac1&#34;&gt;.&lt;/span&gt;run(debug&lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;True&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;step-4-run-your-flask-application&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#step-4-run-your-flask-application&#34;&gt;
+        #
+    &lt;/a&gt;
+    Step 4: Run Your Flask Application
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;To run the Flask application, execute the following command in your terminal:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;python app.py
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You should see output indicating that the server is running, typically on &lt;code&gt;http://127.0.0.1:5000/&lt;/code&gt;. Open your web browser and navigate to this URL. You should see &amp;ldquo;Hello, World!&amp;rdquo; displayed on the page.&lt;/p&gt;
+&lt;h2 id=&#34;step-5-deactivate-the-virtual-environment&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#step-5-deactivate-the-virtual-environment&#34;&gt;
+        #
+    &lt;/a&gt;
+    Step 5: Deactivate the Virtual Environment
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;Once you&amp;rsquo;re done testing your application, you can deactivate the virtual environment by simply running:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;deactivate
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;conclusion&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#conclusion&#34;&gt;
+        #
+    &lt;/a&gt;
+    Conclusion
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;You have successfully installed Flask on your Ubuntu system and created a simple web application. You can now explore Flask&amp;rsquo;s extensive capabilities and build more complex applications. Happy coding!&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <title>Can AI write it&#39;s own Blog Posts?</title>
-      <link>https://blog.sntx.dev/post/ai-blog/</link>
+      <link>/post/ai-blog/</link>
       <pubDate>Wed, 31 Jul 2024 18:12:40 -0400</pubDate>
-      <guid>https://blog.sntx.dev/post/ai-blog/</guid>
-      <description>Introduction Albeit, this article falls outwards of my typical writing style, which normally includes abundant code blocks and programming know-how, but I thought I would give it a try nevertheless. (omg this sounds AI written already i promise its not)&#xA;The idea of AI being able to write it&amp;rsquo;s own social media posts, more specifically instructional posts such as tutorials and guides has plagued my brain from time to time for the past year.</description>
+      
+      <guid>/post/ai-blog/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#introduction&#34;&gt;
+        #
+    &lt;/a&gt;
+    Introduction
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;Albeit, this article falls outwards of my typical writing style, which normally includes abundant code blocks and programming know-how, but I thought I would give it a try nevertheless. (omg this sounds AI written already i promise its not)&lt;/p&gt;
+&lt;p&gt;The idea of AI being able to write it&amp;rsquo;s own social media posts, more specifically instructional posts such as tutorials and guides has plagued my brain from time to time for the past year. I mean it can write your English essays and it has the ability to generate life-like, photorealistic images just based on some textual inputs. How hard could writing a simple article be?&lt;/p&gt;
+&lt;p&gt;I tried a similar thing a while back, using OpenAI&amp;rsquo;s ChatGPT API and posting it&amp;rsquo;s responses onto instructables.com using their (un)official API. This unfortunately did not work reliably and generated some strange feedback from readers, many saying my choice of wording was &amp;ldquo;odd.&amp;rdquo;
+The project was abandoned (like many of my others) and I had no intentions of picking it up again until&amp;hellip;&lt;/p&gt;
+&lt;h2 id=&#34;the-era-of-hugo&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#the-era-of-hugo&#34;&gt;
+        #
+    &lt;/a&gt;
+    The Era of Hugo
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;After recently discovering Hugo and it&amp;rsquo;s amazing open-source capabilities, I had another go at giving AI a media voice. With Hugo&amp;rsquo;s easy to use command line and ChatGPT&amp;rsquo;s ability to seamlessly respond in MarkDown, it seemed like a match made in heaven.&lt;/p&gt;
+&lt;p&gt;All I had to do was write a little script that calls the LLM and then CTRL+C, CTRL+V it&amp;rsquo;s responses into a new post. Then it was easy, I could simply (re)compile the Hugo site with the elementary &lt;code&gt;hugo&lt;/code&gt; command and then use git to push new updates to the repo. Then, oh so beloved Vercel would handle the rest, making the site live to the public.&lt;/p&gt;
+&lt;h2 id=&#34;the-issues&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#the-issues&#34;&gt;
+        #
+    &lt;/a&gt;
+    The Issues
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;Now that AI has a voice, what will it do? Will it write about what I ask of it? Or will it generate nonsense that only confuses readers? Here was the first issue I came across; &lt;strong&gt;fact-checking&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;How on Earth do I verify the validity of the bot&amp;rsquo;s tutorials? The thought of forcing my friends to follow the possibly-rubbish guides to see their outcomes crossed my mind more than twice&amp;hellip; The wisest choice of all is to have myself fact check them all individually. When a new article is written and published by AI, it will have a banner claiming that &amp;ldquo;This AI-written article has not yet been verified.&amp;rdquo; This puts the reader in choice of proceeding or not. Ideally, I can have the articles checked within 1-2 business days. Afterwards, the banner will be removed and replaced by a similar one claiming that the article has been fact-checked by a human.&lt;/p&gt;
+&lt;p&gt;Although the reputability of the AI is most definetely my biggest concern, another pretty important problem that quickly surfaced was hosting.
+Now this may not seem of such difficulty to most, (yes I hear you yelling &amp;lsquo;VPS&amp;rsquo; over there calm down) finding a &lt;strong&gt;free&lt;/strong&gt; VPS provider that doesn&amp;rsquo;t have spontaneous uptime, and has a support team that speaks English is a bit harder than you might initially think. Luckily, OCI (Oracle Cloud Infratructures) came to the rescue with their Always-Free tier that allows VMs to be run 24/7 at the cost of limited performance, which should be fine for me.&lt;/p&gt;
+&lt;p&gt;Now this is definetely not all of the issues I have faced, nor will it be the last I face on this project. At the time of writing this article, I haven&amp;rsquo;t even finished the project yet, which leaves abundant time for more issues to suface. I&amp;rsquo;ll be sure to keep this article up-to-date on my latest failures and struggles though!&lt;/p&gt;
+</description>
     </item>
+    
   </channel>
 </rss>

@@ -4,3 +4,12 @@
 [submodule "themes/tophat"]
 	path = themes/tophat
 	url = https://github.com/sergiobarriel/tophat-theme.git
+[submodule "themes/lowkey"]
+	path = themes/lowkey
+	url = https://github.com/nixentric/Lowkey-Hugo-Theme.git
+[submodule "themes/enchanted-lowkey"]
+	path = themes/enchanted-lowkey
+	url = https://github.com/nixentric/Lowkey-Hugo-Theme.git
+[submodule "themes/anubis2"]
+	path = themes/anubis2
+	url = https://github.com/Junyi-99/hugo-theme-anubis2.git

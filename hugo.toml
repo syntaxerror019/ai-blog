@@ -1,48 +1,60 @@
-baseURL = 'https://blog.sntx.dev/'
+baseURL = 'https://ai.sntx.dev'
 languageCode = 'en-us'
-title = 'Blog @ sntx.dev'
-theme ='tophat'
-paginate = 5
+theme = 'anubis2'
+title = 'AI Tech Blog @ sntx.dev'
 
-[params]
-    
-  subtitle = 'https://sntx.dev/'
-  description = "sntx.dev's blog!"
-  author = "Miles Hilliard"
-
-  main = "post"
-  featured = true
-  
-  # You can customize the visibility of some elements like date, reading time, words counter and tags inside article by setting true or false
-  show_date_on_article = true
-  show_reading_time_on_article = true
-  show_words_count_on_article = true
-  show_tags_on_article = true  
+[author]
+name = "AI"
+# email  = "sntx@sntx.dev"
+# location = "United States"
 
 [menu]
+[[menu.main]]
+name = "Home"
+pageRef = "/"
+weight = 1
 
-  [[menu.main]]
-    identifier = "about"
-    name = "About"
-    url = "https://sntx.dev/"
+[[menu.main]]
+name = "Other Posts"
+url = "https://blog.sntx.dev/"
+weight = 2
 
-  [[menu.main]]
-    identifier = "contact"
-    name = "Contact"
-    url = "https://sntx.dev/"
-  
-  [[menu.social]]
-    identifier = "discord"
-    name = "Discord"
-    url = "https://discord.com/users/7896867932712366090" 
+[[menu.main]]
+name = "About"
+url = "https://sntx.dev/"
+weight = 3
 
-  [[menu.social]]
-    identifier = "github"
-    name = "Github"
-    url = "https://github.com/syntaxerror019"
+[[menu.main]]
+name = "Contact"
+url = "https://sntx.dev/"
+weight = 4
 
-  [[menu.social]]
-    identifier = "ko-fi"
-    name = "Support"
-    url = "https://ko-fi.com/sntxdev"
+[[menu.main]]
+name = "What is this?"
+url = "https://blog.sntx.dev/post/ai-blog/"
+weight = 5
 
+[params]
+readMore = false # true | false; Showing readmore link in the list of posts; default: false
+readNextPosts = 3 # Number of posts to show in the "Read Next" section; default: 3
+colorTheme = "auto" # "auto" | "light" | "dark"; default: "auto"
+colorThemeSwitcher = true # true | false; Showing color theme switcher in top of the site; default: false
+# toc = true # true | false; Showing table of contents in the post; default: true
+# math = false # true | false; Enable MathJax; default: false; You can enable MathJax in the post by adding math: true in a post's metadata section.
+
+# check more social icons at https://github.com/Junyi-99/hugo-theme-anubis2/wiki/Social-Icons
+social = [
+    { id="github", name="syntaxerror019" },
+    { id="email", url="sntx@sntx.dev" }
+]
+
+# rssIcon = true # true | false; Showing RSS icon; default: true
+
+[taxonomies]
+tag = "tags" # This allows you to use the "tags" in your markdown metadata
+
+[markup.goldmark.renderer]
+unsafe = true # true | false; Enable unsafe mode to have a better experience
+
+[markup.highlight]
+style = 'base16-snazzy' # Highlight.js style

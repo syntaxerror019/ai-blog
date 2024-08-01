@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Typically on `Http://127.0.0.1:5000/`.\N\n### Step 5: Accessing Your Application\n\nOpen a Web Browser and Navigate to `Http://127.0.0.1:5000/`. You Should See the Message **Hello on AI Tech Blog @ sntx.dev</title>
+    <link>/tags/typically-on-http/127.0.0.15000/.%5Cn%5Cn%23%23%23-step-5-accessing-your-application%5Cn%5Cnopen-a-web-browser-and-navigate-to-http/127.0.0.15000/.-you-should-see-the-message-hello/</link>
+    <description>AI Tech Blog @ sntx.dev (Typically on `Http://127.0.0.1:5000/`.\N\n### Step 5: Accessing Your Application\n\nOpen a Web Browser and Navigate to `Http://127.0.0.1:5000/`. You Should See the Message **Hello)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 01 Aug 2024 09:44:56 -0400</lastBuildDate>
+    
+    <atom:link href="/tags/typically-on-http/127.0.0.15000/.%5Cn%5Cn%23%23%23-step-5-accessing-your-application%5Cn%5Cnopen-a-web-browser-and-navigate-to-http/127.0.0.15000/.-you-should-see-the-message-hello/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Installing and Using Flask on Ubuntu</title>
+      <link>/post/08-01-24-installing-and-using-flask-on-ubuntu/</link>
+      <pubDate>Thu, 01 Aug 2024 09:44:56 -0400</pubDate>
+      
+      <guid>/post/08-01-24-installing-and-using-flask-on-ubuntu/</guid>
+      <description>&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;
+
+In this tutorial, we will walk through the process of installing Flask, a popular web framework for Python, on an Ubuntu system. We will cover the prerequisites, installation steps, and a simple example to get you started with building web applications using Flask.
+
+### Prerequisites
+
+Before you begin, ensure that you have the following:
+
+- **Ubuntu** installed on your machine.
+- **Python** (version 3.6 or higher) installed. You can check your Python version by running:
+  ```bash
+  python3 --version
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;pip&lt;/strong&gt; (Python package installer) installed. You can check if pip is installed by running:
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pip3 --version
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If Python or pip is not installed, you can install them using the following commands:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt update
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install python3 python3-pip
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;step-1-setting-up-a-virtual-environment&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#step-1-setting-up-a-virtual-environment&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Step 1: Setting Up a Virtual Environment
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;It&amp;rsquo;s a good practice to use a virtual environment for your projects to manage dependencies. To create a virtual environment, follow these steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Install the &lt;code&gt;venv&lt;/code&gt; module if it&amp;rsquo;s not already installed:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt install python3-venv
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Create a new directory for your Flask project:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mkdir my_flask_app
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff5c57&#34;&gt;cd&lt;/span&gt; my_flask_app
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Create a virtual environment:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;python3 -m venv venv
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Activate the virtual environment:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff5c57&#34;&gt;source&lt;/span&gt; venv/bin/activate
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;step-2-installing-flask&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#step-2-installing-flask&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Step 2: Installing Flask
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;With the virtual environment activated, you can now install Flask using pip:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pip install Flask
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;step-3-creating-a-simple-flask-application&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#step-3-creating-a-simple-flask-application&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Step 3: Creating a Simple Flask Application
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;Now that Flask is installed, let&amp;rsquo;s create a simple web application.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Create a new file named &lt;code&gt;app.py&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;touch app.py
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Open &lt;code&gt;app.py&lt;/code&gt; in your favorite text editor and add the following code:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;from&lt;/span&gt; flask &lt;span style=&#34;color:#ff6ac1&#34;&gt;import&lt;/span&gt; Flask
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;app &lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt; Flask(__name__)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Flask, Python, Web Development, Ubuntu, Tutorial, Programming&lt;span style=&#34;color:#ff6ac1&#34;&gt;@&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
